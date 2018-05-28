@@ -11,6 +11,7 @@
               <div class="title_left">
                 <h3>Data Master</h3>
               </div>
+        
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
@@ -23,6 +24,16 @@
                 </div>
               </div>
             </div>
+
+             @if(session('info'))
+             <div class="row">
+               <div class="alert alert-success col-md-4 col-md-offset-4">
+                <button class="close" type="button" data-dismiss="alert" aria-hiden="true">&times;</button>
+                  {{ session('info') }}
+                </div>
+             </div>
+                
+              @endif
 
 	<div class="clearfix"></div>
 	
@@ -64,7 +75,7 @@
                           	<form action="{{ route('program.destroy', $program->program_id) }}" method="POST">
                           	{{ csrf_field() }}
                           	{{ method_field('DELETE') }}
-                          	<a href="#" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> Ubah</a>
+                          	<a href="{{ route('program.edit', $program->program_id) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> Ubah</a>
                           	<button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</button>
                           	</form>
                           </td>

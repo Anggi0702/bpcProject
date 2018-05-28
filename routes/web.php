@@ -19,4 +19,7 @@ Route::get('/program', 'ProgramController@index')->name('program.index');
 Route::get('/program/tambah', 'ProgramController@create')->name('program.create');
 Route::post('/program/tambah', 'ProgramController@store')->name('program.store');
 
+Route::get('/program/{program}/edit', 'ProgramController@edit')->name('program.edit');
+Route::patch('/program/{program}/edit', 'ProgramController@update')->name('program.update');
+
 Route::delete('/program/{program_id}/delete', 'ProgramController@destroy')->name('program.destroy');

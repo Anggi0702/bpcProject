@@ -7,16 +7,13 @@ use App\Program;
 
 class ProgramController extends Controller
 {
-	public function index()
-    {
-    	$programs = Program::all();
-    	return view('program.dataProgram', compact('programs'));
-    }
 
     public function create()
     {
     	return view('program.tambahData');
     }
+
+
 
     public function store()
     {
@@ -28,6 +25,36 @@ class ProgramController extends Controller
 
     	return redirect()->route('program.index');
     }
+
+
+    public function index()
+    {
+        $programs = Program::all();
+        return view('program.dataProgram', compact('programs'));
+    }
+
+
+    public function edit(Program $program)
+    {   
+        $programs = Program::all();
+        return view('program.editData', compact('program'));
+    }
+
+
+    public function update(Program $program)
+        {
+            $program->update([
+                'name' => request('name'),
+                'pertemuan' => request('pertemuan'),
+                'biaya' => request('biaya'),
+            ]);
+            
+
+        return redirect()->route('program.index')->with('info', 'Data berhasil diupdate');
+
+
+    }
+
 
     public function destroy($program_id)
     {

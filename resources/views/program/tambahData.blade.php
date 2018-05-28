@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  Tambah program kursus
+@endsection
+
 @section('content')
 <div class="right_col" role="main">
           <div class="">

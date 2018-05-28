@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  Program kursus
+@endsection
+
 @section('content')
 <div class="right_col" role="main">
           <div class="">
@@ -19,22 +23,25 @@
                 </div>
               </div>
             </div>
+
 	<div class="clearfix"></div>
-	<div class="row">
+	
+  <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Program Kursus <small>Users</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                      </li>
+                      <a href="{{ route('program.create') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Tambah</a>
+                      
                      
+                  
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     
-                    <a href="{{ route('program.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+
                     
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
@@ -54,11 +61,11 @@
                           <td>{{ $program->pertemuan }}</td>
                           <td>{{ $program->biaya }}</td>
                           <td>
-                          	<form action="{{ route('program.destroy', $program) }}" method="POST">
+                          	<form action="{{ route('program.destroy', $program->program_id) }}" method="POST">
                           	{{ csrf_field() }}
                           	{{ method_field('DELETE') }}
-                          	<a href="#" class="btn btn-warning btn-sm">Ubah</a>
-                          	<button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                          	<a href="#" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> Ubah</a>
+                          	<button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</button>
                           	</form>
                           </td>
 

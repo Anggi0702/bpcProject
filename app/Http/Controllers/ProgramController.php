@@ -29,9 +29,10 @@ class ProgramController extends Controller
     	return redirect()->route('program.index');
     }
 
-    public function destroy(Program $program)
+    public function destroy($program_id)
     {
-    	$program->delete();
+        Program::where('program_id', $program_id)
+    	->delete();
     	
     	return redirect()->route('program.index');
     }

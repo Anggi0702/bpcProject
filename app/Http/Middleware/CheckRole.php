@@ -21,7 +21,7 @@ class CheckRole
         {
             return $next($request);
         }
-        return redirect('/permission.noPermission');
+        return redirect()->route('notFound');
     }
 
     private function getRequiredRoleForRoute($route)

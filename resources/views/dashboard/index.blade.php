@@ -9,7 +9,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Data Master</h3>
+                <h3>Beranda</h3>
               </div>
         
 
@@ -25,7 +25,7 @@
               </div>
             </div>
 
-              <h1>WELCOME</h1>
+              <h1>WELCOME {{ Auth::user()->nama }}</h1>
 
               </div>
 

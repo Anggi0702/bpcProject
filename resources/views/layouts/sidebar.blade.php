@@ -4,17 +4,16 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Beranda <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
-                      <li><a href="index2.html">Dashboard2</a></li>
-                      <li><a href="index3.html">Dashboard3</a></li>
+                      <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                      
                     </ul>
                   </li>
                   <li><a><i class="fa fa-database"></i> Data Master <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Data Peserta Kursus</a></li>
-                      <li><a href="form_advanced.html">Data Karyawan</a></li>
+                      <li><a href="{{ route('karyawan.index') }}">Data Karyawan</a></li>
                       <li><a href="{{ route('program.index') }}">Program Kursus</a></li>
-                      <li><a href="form_wizards.html">Data Jabatan</a></li>
+                      <li><a href="{{ route('jabatan.index') }}">Data Jabatan</a></li>
                       <li><a href="form_upload.html">Data Jasa</a></li>
                     </ul>
                   </li>

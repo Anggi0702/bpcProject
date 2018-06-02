@@ -55,9 +55,9 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-shield"></i> Esp Banjarbaru</h1>
+                  <h1><i class="fa fa-laptop"></i> Bina Pelaihari Computer</h1>
 
-                  <p>Redesign by Cv.Dzaki Usaha Mandiri <br> ©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <p>©2018 All Rights Reserved Bina Pelaihari Computer (BPC)</p>
                 </div>
               </div>
             </form>

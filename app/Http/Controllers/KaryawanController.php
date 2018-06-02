@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class KaryawanController extends Controller
+{
+    public function index()
+    {
+    	return view('karyawan.dataKaryawan');
+    }
+
+
+    public function create()
+    {
+    	return view('karyawan.tambahData');
+    }
+}

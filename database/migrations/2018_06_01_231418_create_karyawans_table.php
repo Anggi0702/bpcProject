@@ -19,7 +19,7 @@ class CreateKaryawansTable extends Migration
             $table->string('nama_karyawan', 30);
             $table->date('tgl_lahir');
             $table->string('alamat', 100);
-            $table->string('no_hp', 13);
+            $table->string('no_hp', 50)->change();
             $table->timestamps();
             $table->foreign('jabatan_id')->references('jabatan_id')->on('jabatans');
         });

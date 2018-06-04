@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  Edit program kursus
+  Tambah program kursus
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Form Elements</h3>
+                <h3><i class="fa fa-database"></i> Data Master</h3>
               </div>
 
               <div class="title_right">
@@ -28,7 +28,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Design <small>different form elements</small></h2>
+                    <h2>Ubah Data Karyawan</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -48,35 +48,53 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form id="demo-form2" action="{{ route('program.update', $program)}}" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+                    <form id="demo-form2" action="{{ route('karyawan.update', $karyawan) }}" method="POST" data-parsley-validate class="form-horizontal form-label-left">
                       {{ csrf_field() }}
-                      {{ method_field('PATCH')}}
+                      {{ method_field('PATCH') }}
 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama_program">Nama Program <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama_karyawan">Nama Karyawan <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" name="nama_program" id="nama_program" value="{{ $program->nama_program }}" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Pertemuan <span class="required">*</span></label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="pertemuan" name="pertemuan" value="{{ $program->pertemuan }}" required="required" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                          <input type="text" name="nama_karyawan" id="nama_karyawan"  value="{{ $karyawan->nama_karyawan }}" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Biaya <span class="required">*</span></label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Jabatan</label>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                          <select name="jabatan_id" class="form-control">
+                            @foreach($jabatans as $jabatan)
+                            <option value="{{ $jabatan->jabatan_id }}" >{{ $jabatan->nama_jabatan }}</option>
+                            @endforeach
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tgl_lahir">Tanggal Lahir <span class="required">*</span>
+                        </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="biaya" name="biaya" required="required" value="{{ $program->biaya }}" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                          <input type="date" name="tgl_lahir" id="tgl_lahir" value="{{ $karyawan->tgl_lahir }}" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="alamat">Alamat <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <textarea name="alamat" id="alamat" class="resizable_textarea form-control" cols="5" rows="4">{{ $karyawan->alamat }}</textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="no_hp">No Handphone <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" name="no_hp" id="no_hp" value="{{ $karyawan->no_hp }}" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <a href="{{ route('program.index') }}" class="btn btn-info">Cancel</a>
-                          <button type="submit" class="btn btn-success">Simpan</button>
+                          <a href="{{ route('program.index') }}" class="btn btn-info"><i class="fa fa-times-circle"></i> Batal</a>
+                          <button type="submit" class="btn btn-success"><i class="fa fa-check-square-o"></i> Simpan</button>
                         </div>
                       </div>
 

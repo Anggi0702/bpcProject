@@ -8,6 +8,12 @@ use App\Program;
 class ProgramController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('web');
+    }
+
+
     public function create()
     {
     	return view('program.tambahData');
@@ -18,7 +24,7 @@ class ProgramController extends Controller
     public function store()
     {
     	Program::create([
-    		'name' => request('name'),
+    		'nama_proogram' => request('nama_program'),
     		'pertemuan' => request('pertemuan'),
     		'biaya' => request('biaya'),
     	]);
@@ -44,7 +50,7 @@ class ProgramController extends Controller
     public function update(Program $program)
         {
             $program->update([
-                'name' => request('name'),
+                'name' => request('nama_program'),
                 'pertemuan' => request('pertemuan'),
                 'biaya' => request('biaya'),
             ]);

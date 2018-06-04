@@ -1,5 +1,14 @@
 @extends('layouts.master')
 
+@section('link')
+  <!-- Datatables -->
+    <link href="{{ asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('title')
   Program kursus
 @endsection
@@ -9,25 +18,14 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Data Master</h3>
-              </div>
-        
-
-              <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Cari</button>
-                    </span>
-                  </div>
-                </div>
+                <h3><i class="fa fa-database"></i> Data Master</h3>
               </div>
             </div>
 
+
              @if(session('info'))
              <div class="row">
-               <div class="alert alert-success col-md-4 col-md-offset-4">
+               <div class="alert alert-success col-md-12">
                 <button class="close" type="button" data-dismiss="alert" aria-hiden="true">&times;</button>
                   {{ session('info') }}
                 </div>
@@ -58,29 +56,29 @@
                           <th style="width: 300px">Nama</th>
                           <th style="width: 150px">Jabatan</th>
                           <th>No Handphone</th>
-                          <th style="width: 200px">Action</th>
+                          <th style="width: 200px; text-align: center;">Aksi</th>
                         </tr>
                       </thead>
 
 
                       <tbody>
-                      	
+                      	@foreach($karyawans as $karyawan)
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <td>{{ $karyawan->nama_karyawan }}</td>
+                          <td>{{ $karyawan->jabatan['nama_jabatan'] }}</td>
+                          <td>{{ $karyawan->no_hp }}</td>
                           <td>
-                          	<form action="" method="POST">
+                          	<form action="{{ route('karyawan.destroy', $karyawan->karyawan_id) }}" method="POST">
                           	{{ csrf_field() }}
                           	{{ method_field('DELETE') }}
-                            <a href="" class="btn btn-default btn-xs"><i class="fa fa-info"></i> Details</a>
-                          	<a href="" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> Ubah</a>
+                            <a href="{{ route('karyawan.detail', $karyawan) }}" class="btn btn-default btn-xs" target="_blank"><i class="fa fa-info"></i> Rincian</a>
+                          	<a href="{{ route('karyawan.edit', $karyawan) }}" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i> Ubah</a>
                           	<button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Hapus</button>
                           	</form>
                           </td>
 
                         </tr>
-                      
+                      @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -92,4 +90,24 @@
 
 </div>
 
+@endsection
+
+
+@section('script')
+<!-- Datatables -->
+    <script src="{{ asset('vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
+    <script src="{{ asset('vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('vendors/jszip/dist/jszip.min.js') }}"></script>
+    <script src="{{ asset('vendors/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script>
 @endsection

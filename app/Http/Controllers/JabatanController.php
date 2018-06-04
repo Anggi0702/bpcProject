@@ -8,6 +8,12 @@ use App\Jabatan;
 class JabatanController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('web');
+    }
+
+
     public function index()
     {
     	$jabatans = Jabatan::all();
@@ -47,12 +53,5 @@ class JabatanController extends Controller
 
     }
 
-    public function destroy($jabatan_id)
-    {
-    	Jabatan::where('jabatan_id', $jabatan_id)
-    	->delete();
-
-    	return redirect()->route('jabatan.index')->with('info', 'Data berhasil dihapus'); 
-
-    }
+   
 }

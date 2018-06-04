@@ -10,7 +10,7 @@
                   </li>
                   <li><a><i class="fa fa-database"></i> Data Master <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Data Peserta Kursus</a></li>
+                      <li><a href="{{ route('peserta.index') }}">Data Peserta Kursus</a></li>
                       <li><a href="{{ route('karyawan.index') }}">Data Karyawan</a></li>
                       <li><a href="{{ route('program.index') }}">Program Kursus</a></li>
                       <li><a href="{{ route('jabatan.index') }}">Data Jabatan</a></li>

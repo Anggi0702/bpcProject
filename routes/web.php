@@ -38,7 +38,17 @@ Route::group(['middleware'=>['authen','roles'],'roles'=>['Admin']],function(){
 
 	Route::get('/karyawan', 'KaryawanController@index')->name('karyawan.index');
 	Route::get('/karyawan/tambah-data', 'KaryawanController@create')->name('karyawan.create');
+	Route::post('/karyawan/tambah-data', 'KaryawanController@store')->name('karyawan.store');
+	Route::get('/karyawan/{karyawan}/edit', 'KaryawanController@edit')->name('karyawan.edit');
+	Route::patch('/karyawan/{karyawan}/edit-data', 'KaryawanController@update')->name('karyawan.update');
+	Route::delete('/karyawan/{karyawan_id}/delete', 'KaryawanController@destroy')->name('karyawan.destroy');
+	Route::get('/karyawan/{karyawan}/detail', 'KaryawanController@detail')->name('karyawan.detail');
 
+
+	Route::get('/peserta', 'PesertaController@index')->name('peserta.index');
+	Route::get('/peserta/tambah-data', 'PesertaController@create')->name('peserta.create');
+	Route::post('/peserta/tambah-data', 'PesertaController@store')->name('peserta.store');
+	Route::delete('/peserta/{peserta_id}/delete', 'PesertaController@destroy')->name('peserta.destroy');	
 
 });
 
